@@ -1,38 +1,32 @@
-.App {
-  text-align: center;
+.ant-input-affix-wrapper {
+  padding: 0;
+  vertical-align: middle;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.ant-tabs-tab-active {
+  background-color: #e1f7ffbd;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.ant-table-cell {
+  padding: 0;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.ant-tabs-nav {
+  margin-bottom: 0;
 }
-
-.App-link {
-  color: #61dafb;
+.ant-tabs-top > .ant-tabs-nav,
+.ant-tabs-top > div > .ant-tabs-nav {
+  margin: 0;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.ant-tabs-left > .ant-tabs-nav .ant-tabs-tab,
+.ant-tabs-left > div > .ant-tabs-nav .ant-tabs-tab {
+  padding: 20px 10px;
+}
+.ant-table-cell {
+  border: 1px solid #f0f0f0;
+}
+.ant-tabs-card.ant-tabs-top > .ant-tabs-nav .ant-tabs-tab-active,
+.ant-tabs-card.ant-tabs-top > div > .ant-tabs-nav .ant-tabs-tab-active {
+  background-color: #e1f7ffbd;
+  border-bottom-color: #e1f7ffbd;
+}
+.ant-table-thead > tr > th {
+  background-color: #e1f7ffbd;
 }
