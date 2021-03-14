@@ -9,6 +9,8 @@ const initialState = {
   loading: true,
   error: "",
   data: [],
+  isSearchActive: false,
+  foundWords: [],
 };
 
 const reducer = (state, action) => {
@@ -25,6 +27,12 @@ const reducer = (state, action) => {
         loading: false,
         data: [],
         error: "Something went wrong!",
+      };
+    case "SEARCH_MOVIES_FAILURE":
+      return {
+        ...state,
+        loading: false,
+        error: "",
       };
     default:
       return state;
@@ -54,7 +62,12 @@ function App() {
   }, []);
 
   return (
-    <DataContext.Provider value={{ state: state, dispatch: dispatch }}>
+    <DataContext.Provider
+      value={{
+        state: state,
+        dispatch: dispatch,
+      }}
+    >
       <TabsForAside />
     </DataContext.Provider>
   );

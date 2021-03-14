@@ -1,19 +1,20 @@
-import { Input, Space } from "antd";
+// import React, { useState } from "react";
+// import { Input, Space } from "antd";
+// import { DataContext } from "../App";
 
-const { Search } = Input;
+// const { Search } = Input;
 
-const SearchBox = () => {
-  const onSearch = (value) => console.log(value);
+// const SearchBox = () => {
+//   return (
+//     <Space direction="vertical" style={{ width: "75%", margin: "20px 0" }}>
+//       <Search
+//         placeholder="input search text..."
+//         value={searchValue}
+//         onChange={handleSearchInputChanges}
+//         enterButton
+//       />
+//     </Space>
+//   );
+// };
 
-  return (
-    <Space direction="vertical" style={{ width: "75%", margin: "20px 0" }}>
-      <Search
-        placeholder="input search text..."
-        onSearch={onSearch}
-        enterButton
-      />
-    </Space>
-  );
-};
-
-export default SearchBox;
+// export default SearchBox;
