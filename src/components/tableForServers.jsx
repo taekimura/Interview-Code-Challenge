@@ -1,36 +1,32 @@
+import React, { useContext } from "react";
 import { Table } from "antd";
+import { DataContext } from "../App";
 
 const TableForServers = () => {
+  const dataContext = useContext(DataContext);
   const columns = [
     {
       title: "Ip4",
-      dataIndex: "ip4",
+      dataIndex: ["server", "ip4"],
       width: "40%",
     },
     {
       title: "Dns",
-      dataIndex: "dns",
+      dataIndex: ["server", "dns"],
     },
   ];
-
-  const data = [];
-  for (let i = 0; i < 100; i++) {
-    data.push({
-      key: i,
-      ip4: `Edward King ${i}`,
-      dns: `Rink# ${i}`,
-    });
-  }
 
   return (
     <>
       <Table
         columns={columns}
-        dataSource={data}
+        dataSource={dataContext.state.data}
         pagination={false}
-        scroll={{ y: "71vh" }}
+        scroll={{ y: "73vh" }}
       />
-      <div>Total:---</div>
+      <div style={{ textAlign: "center" }}>
+        Total:{dataContext.state.data.length}
+      </div>
     </>
   );
 };

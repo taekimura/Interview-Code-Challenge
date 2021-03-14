@@ -1,4 +1,4 @@
-.ant-input-affix-wrapper {
+/* .ant-input-affix-wrapper {
   padding: 0;
   vertical-align: middle;
 }
@@ -9,12 +9,9 @@
   padding: 0;
 }
 .ant-tabs-nav {
-  margin-bottom: 0;
+  margin: 0 0 0 0;
 }
-.ant-tabs-top > .ant-tabs-nav,
-.ant-tabs-top > div > .ant-tabs-nav {
-  margin: 0;
-}
+
 .ant-tabs-left > .ant-tabs-nav .ant-tabs-tab,
 .ant-tabs-left > div > .ant-tabs-nav .ant-tabs-tab {
   padding: 20px 10px;
@@ -30,3 +27,19 @@
 .ant-table-thead > tr > th {
   background-color: #e1f7ffbd;
 }
+.ant-table-tbody > tr.ant-table-row:hover > td {
+  background-color: #eed6d681;
+}
+.ant-card-head {
+  background-color: #ce97a6bd;
+}
+.ant-card-head-title {
+  text-align: center;
+  padding-left: 0;
+}
+.ant-card {
+  background-color: #eed6d681;
+}
+.ant-table-tbody > tr > td {
+  padding: 10px 16px;
+} */

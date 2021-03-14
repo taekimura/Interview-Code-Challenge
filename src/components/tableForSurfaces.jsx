@@ -1,6 +1,9 @@
+import React, { useContext } from "react";
 import { Table } from "antd";
+import { DataContext } from "../App";
 
 const TableForSurfaces = () => {
+  const dataContext = useContext(DataContext);
   const columns = [
     {
       title: "Venue Name",
@@ -22,26 +25,17 @@ const TableForSurfaces = () => {
     },
   ];
 
-  const data = [];
-  for (let i = 0; i < 100; i++) {
-    data.push({
-      key: i,
-      venueName: `Edward King ${i}`,
-      surfaceName: `Rink# ${i}`,
-      status: `Hockey${i}`,
-      sport: `OK`,
-    });
-  }
-
   return (
     <>
       <Table
         columns={columns}
-        dataSource={data}
+        dataSource={dataContext.state.data}
         pagination={false}
-        scroll={{ y: "71vh" }}
+        scroll={{ y: "73vh" }}
       />
-      <div>Total:---</div>
+      <div style={{ textAlign: "center" }}>
+        Total:{dataContext.state.data.length}
+      </div>
     </>
   );
 };

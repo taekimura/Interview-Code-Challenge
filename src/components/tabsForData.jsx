@@ -7,7 +7,7 @@ const TabsForData = () => {
   return (
     <>
       <Tabs defaultActiveKey="surfaces" type="card" size="large">
-        <TabPane tab="Surfaces" key="surfaces">
+        <TabPane tab="Surfaces" key="surfaces" style={{ margin: 0 }}>
           <TableForSurfaces />
         </TabPane>
         <TabPane tab="Servers" key="servers">
