@@ -1,9 +1,12 @@
 import { Tabs } from "antd";
-import DataContainer from "./dataContainer";
+import DashBoard from "./dashboard";
 import { InboxOutlined, DatabaseOutlined } from "@ant-design/icons";
 const TabPane = Tabs.TabPane;
 
-const TabsForAside = () => {
+/***
+ * This is the tabs for an empty tab and data.
+ ***/
+const LeftTabs = () => {
   return (
     <Tabs
       tabPosition="left"
@@ -34,10 +37,10 @@ const TabsForAside = () => {
         }
         key="data"
       >
-        <DataContainer />
+        <DashBoard />
       </TabPane>
     </Tabs>
   );
 };
 
-export default TabsForAside;
+export default LeftTabs;

@@ -1,0 +1,12 @@
+.clickRowStyl {
+  background-color: #baeefc;
+}
+.ant-tabs-top > .ant-tabs-nav,
+.ant-tabs-bottom > .ant-tabs-nav,
+.ant-tabs-top > div > .ant-tabs-nav,
+.ant-tabs-bottom > div > .ant-tabs-nav {
+  margin: 0 0 0 0 !important;
+}
+.ant-table-tbody > tr > td {
+  border-left: 1px solid #f0f0f0;
+}
