@@ -1,7 +1,6 @@
 import React, { useReducer, useEffect } from "react";
 import axios from "axios";
 import TabsForAside from "./components/tabsForAside";
-import "./App.css";
 
 export const DataContext = React.createContext();
 
@@ -39,26 +38,33 @@ const reducer = (state, action) => {
   }
 };
 
-function App() {
+const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    axios
-      .get(
-        "https://2hsjstzo71.execute-api.us-east-1.amazonaws.com/prod/livebarn-interview-project"
-      )
-      .then((response) => {
-        dispatch({
-          type: "FETCH_SUCCESS",
-          payload: response.data,
+    const fetchData = () => {
+      axios
+        .get(
+          "https://2hsjstzo71.execute-api.us-east-1.amazonaws.com/prod/livebarn-interview-project"
+        )
+        .then((response) => {
+          dispatch({
+            type: "FETCH_SUCCESS",
+            payload: response.data,
+          });
+          console.log(response.data);
+        })
+        .catch((error) => {
+          dispatch({
+            type: "FETCH_ERROR",
+          });
         });
-        console.log(response.data);
-      })
-      .catch((error) => {
-        dispatch({
-          type: "FETCH_ERROR",
-        });
-      });
+    };
+    fetchData();
+    const interval = setInterval(() => {
+      fetchData();
+    }, 60000);
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -71,5 +77,5 @@ function App() {
       <TabsForAside />
     </DataContext.Provider>
   );
-}
+};
 export default App;
