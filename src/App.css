@@ -1,5 +1,5 @@
 .clickRowStyl {
-  background-color: #baeefc;
+  background-color: #baeefc !important;
 }
 .ant-tabs-top > .ant-tabs-nav,
 .ant-tabs-bottom > .ant-tabs-nav,

@@ -34,9 +34,6 @@ export const serverColumns = [
     key: "ip4",
     render: (record) => record.server.ip4,
     width: "40%",
-    sorter: (a, b) =>
-      a.server.ip4.slice(-4).localeCompare(b.server.ip4.slice(-4)),
-    defaultSortOrder: "ascend",
   },
   {
     title: "Dns",

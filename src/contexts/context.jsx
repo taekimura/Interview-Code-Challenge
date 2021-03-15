@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect, useState, createContext } from "react";
+import React, { useReducer, useEffect, createContext } from "react";
 import axios from "axios";
 import { initialState } from "../constants";
 import { reducer } from "../reducers/reducer";
