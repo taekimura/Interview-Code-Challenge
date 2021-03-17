@@ -7,6 +7,7 @@ const { TabPane } = Tabs;
 
 const DashBoard = () => {
   const [rowIndex, setRowIndex] = useState(0);
+  const [expandedRowKeys, setExpandedRowKeys] = useState(0);
   const [record, setRecord] = useState("");
   const [recordIp4, setRecordIp4] = useState("");
   const [query, setQuery] = useState("");
@@ -60,20 +61,25 @@ const DashBoard = () => {
 
   const expandedRowRender = () => {
     return (
-      <Table
-        onRow={(record) => {
-          return {
-            onClick: () => {
-              expandData(dataContext.state.data, record.server.ip4);
-            },
-          };
-        }}
-        rowKey="id"
-        columns={expandRowColumns}
-        dataSource={dataContext.state.data}
-        pagination={false}
-        scroll={{ y: "73vh" }}
-      />
+      <>
+        <div>
+          Surface Num:{expandData(dataContext.state.data, recordIp4).length}
+        </div>
+        <Table
+          onRow={(record) => {
+            return {
+              onClick: () => {
+                expandData(dataContext.state.data, record.server.ip4);
+              },
+            };
+          }}
+          rowKey="id"
+          columns={expandRowColumns}
+          dataSource={expandData(dataContext.state.data, recordIp4)}
+          pagination={false}
+          scroll={{ y: "73vh" }}
+        />
+      </>
     );
   };
 
@@ -95,12 +101,20 @@ const DashBoard = () => {
           <p>Surface Name : {record.surfaceName}</p>
           <p>Status : {record.status}</p>
           <p>Sport : {record.sport}</p>
-          <p>ServerIP : {recordIp4.ip4}</p>
+          <p>ServerIP : {recordIp4}</p>
         </>
       );
     }
   };
 
+  const onTableRowExpand = (expanded, record) => {
+    var keys = [];
+    if (expanded) {
+      keys.push(record.id);
+    }
+
+    setExpandedRowKeys(keys);
+  };
   return (
     <>
       <Row>
@@ -124,7 +138,7 @@ const DashBoard = () => {
                     onClick: () => {
                       setRowIndex(rowIndex);
                       setRecord(record);
-                      setRecordIp4(record.server);
+                      setRecordIp4(record.server.ip4);
                       setSelectedColor(record.id);
                     },
                   };
@@ -148,17 +162,26 @@ const DashBoard = () => {
               <Table
                 rowKey="id"
                 rowClassName={setRowClassName}
+                expandedRowKeys={expandedRowKeys}
+                onExpand={onTableRowExpand}
                 onRow={(record) => {
                   return {
                     //Grabbed the data that I'd like to show in expanded table with console.log,
                     //but still working on showing them on the table.
                     onClick: () => {
+                      setRecordIp4(record.server.ip4);
+                      setSelectedColor(record.id);
                       console.log(record.server.ip4);
                       expandData(dataContext.state.data, record.server.ip4);
                     },
                   };
                 }}
-                expandable={{ expandedRowRender }}
+                expandable={{
+                  expandIcon: () => null,
+                  expandRowByClick: true,
+                  expandedRowRender,
+                  expandIconColumnIndex: -1,
+                }}
                 columns={serverColumns}
                 dataSource={filterUniqueIP4(dataContext.state.data)}
                 pagination={false}

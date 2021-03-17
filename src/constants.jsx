@@ -34,11 +34,18 @@ export const serverColumns = [
     key: "ip4",
     render: (record) => record.server.ip4,
     width: "40%",
+    filters: [
+      {
+        text: "0.0.0.17594",
+        value: "0.0.0.17594",
+      },
+    ],
+    onFilter: (value, record) => record.server.ip4.indexOf(value) === 0,
   },
   {
     title: "Dns",
     key: "dns",
-    dataIndex: ["server", "dns"],
+    render: (record) => record.server.dns,
   },
 ];
 
