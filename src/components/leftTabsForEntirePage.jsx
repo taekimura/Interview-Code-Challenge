@@ -1,12 +1,9 @@
+import DataTabContainer from "./dataTabContainer";
 import { Tabs } from "antd";
-import DashBoard from "./dashboard";
 import { InboxOutlined, DatabaseOutlined } from "@ant-design/icons";
 const TabPane = Tabs.TabPane;
 
-/***
- * This is the tabs for an empty tab and data.
- ***/
-const LeftTabs = () => {
+const LeftTabsForEntirePage = () => {
   return (
     <Tabs
       tabPosition="left"
@@ -37,10 +34,10 @@ const LeftTabs = () => {
         }
         key="data"
       >
-        <DashBoard />
+        <DataTabContainer />
       </TabPane>
     </Tabs>
   );
 };
 
-export default LeftTabs;
+export default LeftTabsForEntirePage;

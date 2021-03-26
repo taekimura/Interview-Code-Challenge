@@ -1,4 +1,4 @@
-export const reducer = (state, action) => {
+export const apiReducer = (state, action) => {
   switch (action.type) {
     case "FETCH_SUCCESS":
       return {

@@ -2,16 +2,18 @@ export const initialState = {
   loading: true,
   error: "",
   data: [],
+  filteredSurfaceData: [],
   isSearchActive: false,
   foundWords: [],
 };
+
+export const updateTime = 60000;
 
 export const surfaceColumns = [
   {
     title: "Venue Name",
     dataIndex: "venueName",
     width: "40%",
-    render: (text) => <a href="#">{text}</a>,
   },
   {
     title: "Surface Name",
@@ -32,20 +34,13 @@ export const serverColumns = [
   {
     title: "Ip4",
     key: "ip4",
-    render: (record) => record.server.ip4,
+    dataIndex: "ip4",
     width: "40%",
-    filters: [
-      {
-        text: "0.0.0.17594",
-        value: "0.0.0.17594",
-      },
-    ],
-    onFilter: (value, record) => record.server.ip4.indexOf(value) === 0,
   },
   {
     title: "Dns",
     key: "dns",
-    render: (record) => record.server.dns,
+    dataIndex: "dns",
   },
 ];
 

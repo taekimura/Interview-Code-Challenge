@@ -1,12 +1,17 @@
-import React, { useReducer, useEffect, createContext } from "react";
+import React, { useReducer, useEffect, createContext, useState } from "react";
 import axios from "axios";
-import { initialState } from "../constants";
-import { reducer } from "../reducers/reducer";
+import { initialState, updateTime } from "../constants";
+import { apiReducer } from "../reducers/apiReducer";
 
 export const DataContext = createContext();
 
 export const DataProvider = (props) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(apiReducer, initialState);
+  const [query, setQuery] = useState("");
+  const [rowIndex, setRowIndex] = useState(0);
+  const [recordIp4, setRecordIp4] = useState("");
+  const [currentSurfaceId, setCurrentSurfaceId] = useState(9);
+  const [currentServerId, setCurrentServerId] = useState(17594);
 
   useEffect(() => {
     const fetchData = () => {
@@ -19,7 +24,6 @@ export const DataProvider = (props) => {
             type: "FETCH_SUCCESS",
             payload: response.data,
           });
-          console.log(response.data);
         })
         .catch((error) => {
           dispatch({
@@ -31,15 +35,25 @@ export const DataProvider = (props) => {
     fetchData();
     const interval = setInterval(() => {
       fetchData();
-    }, 60000);
+    }, updateTime);
     return () => clearInterval(interval);
   }, []);
 
   return (
     <DataContext.Provider
       value={{
-        state: state,
-        dispatch: dispatch,
+        state,
+        dispatch,
+        query,
+        setQuery,
+        rowIndex,
+        setRowIndex,
+        recordIp4,
+        setRecordIp4,
+        currentSurfaceId,
+        setCurrentSurfaceId,
+        currentServerId,
+        setCurrentServerId,
       }}
     >
       {props.children}
