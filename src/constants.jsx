@@ -2,7 +2,6 @@ export const initialState = {
   loading: true,
   error: "",
   data: [],
-  filteredSurfaceData: [],
   isSearchActive: false,
   foundWords: [],
 };
